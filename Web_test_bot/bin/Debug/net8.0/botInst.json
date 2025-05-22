@@ -1,0 +1,1239 @@
+{
+  "Bot": {
+    "Token": "7303019104:AAGlsafxBcJe5SM2ckTWQaHexNt_mrA9jqQ",
+    "Token_inf": "6483803548:AAGmbWDvDfumXH26z7ipwsJSqSVkM4r8FYM",
+    "Token_homie": "8056827780:AAGcHMFnqKhOifdRsZZ22FupHNulMJIAH-4",
+    "BotId": ""
+  },
+  "application1": {
+    "KPP": "540801001",
+    "INN": "5408114571",
+    "idWEB": "15497",
+    "ANAme": "Сигнатек, ООО"
+  },
+  "FigmaApps": {
+    "Token": "figd_SwiR_Yc-MtuJZulYAyHuovgJLIJDXbg5dtpSolNH",
+    "trim": "dfs"
+  },
+  "DefoltUsers": [
+    {
+      "TelegramUserName": "kepler_552b",
+      "TelegramId": "469825678",
+      "UserTypeСode": "admin"
+    }
+  ],
+  "BotInst": {
+    "UserTypes": [
+      {
+        "TypeName": "Администратор",
+        "TypeCode": "admin",
+        "TypeDiscr": "Тип пользователя \"Администратор\""
+      },
+      {
+        "TypeName": "Пользователь",
+        "TypeCode": "regUser",
+        "IsDefoult": true,
+        "TypeDiscr": "Тип пользователя \"Обычный пользователь\""
+      }
+    ],
+    "MenuTypes": [
+      {
+        "TypeName": "Статическое меню",
+        "TypeCode": "StaticMenu",
+        "TypeDescription": "Меню с фиксированным количеством кнопок"
+      },
+      {
+        "TypeName": "Динамичное меню",
+        "TypeCode": "DynamicMenu",
+        "TypeDescription": "Меню с произвольным количеством кнопок"
+      },
+      {
+        "TypeName": "Просто сообщение",
+        "TypeCode": "Message",
+        "TypeDescription": "Собщение для пользователя"
+      }
+    ],
+    "InputTypes": [
+      {
+        "TypeName": "Статичная кнопка",
+        "TypeCode": "StaticInput",
+        "TypeDescription": "Тип кнопки, которая остается статичной"
+      },
+      {
+        "TypeName": "Шаблон кнопки",
+        "TypeCode": "DynamicSample",
+        "TypeDescription": "Тип кнопки, который формирует динамическое количество кнопок"
+      },
+      {
+        "TypeName": "Действие",
+        "TypeCode": "Aktion",
+        "TypeDescription": "Прото действие если не нужно ждать реакции от пользователя"
+      },
+      {
+        "TypeName": "Ожидание текста от пользователя",
+        "TypeCode": "AwaitingText",
+        "TypeDescription": "Если получено текстовое сообщение"
+      }
+    ],
+    "Processes": [
+      {
+        "ProcessName": "Контент для пользовтеля",
+        "IsActive": true,
+        "UserAccessCode": "regUser",
+        "Content": [
+          {
+            "MenuName": "🌟📱Приветственное меню.",
+            "MenuCode": "StartMenu_001",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Как я могу тебе помочь?\nВыбери интересующий тебя раздел:",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая запускает процесс начала заполнения и отправки отзыва. Нажмите на неё, чтобы поделиться своим мнением и впечатлениями.",
+                "InputContent": "🖊️Оставить предложение",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_start"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая запускает процесс заполнения и отправки вопроса. Нажмите на неё, чтобы заполнить необходимые поля для вашего вопроса.",
+                "InputContent": "❓ Задать вопрос",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_start"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая запускает процесс сообщения об ошибке. Нажмите на неё, чтобы заполнить необходимые поля и сообщить о возникшей проблеме.",
+                "InputContent": "🔎 Нашли ошибку в материалах",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_start"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая вызывает список всех заявок пользователя.",
+                "InputContent": "Мои запросы",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ListUserIsues"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡🆕Меню которое ожидает текст заявки.",
+            "MenuCode": "ProcessAdvice_start",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Напишите в диалоговое окно ваше предложение в HR-отдел.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_001"
+              },
+              {
+                "InputName": "Ожидание текста",
+                "InputDescription": "Действие по вводу текста",
+                "InputContent": "Создание новой заявки",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ProcessAdvice_step_chek"
+              }
+            ]
+          },
+          {
+            "MenuName": "🔚💡🗑Сообщение от бота, что он всезабыл",
+            "MenuCode": "ProcessAdvice_End_forgetAll",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Все забыли...",
+            "Inputs": [
+              {
+                "InputName": "Действие✅",
+                "InputDescription": "📝Действие по вводу текста",
+                "InputContent": "Переход на стартовое меню",
+                "InputType": "Aktion",
+                "NextMenuCode": "StartMenu_001"
+              }
+            ]
+          },
+          {
+            "MenuName": "⚙️💡🖍Меню, где у пользователя просят проверить введеный текст предложения",
+            "MenuCode": "ProcessAdvice_step_chek",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Вот текст предложений, который ты ввел:\n\n<blockquote>{text}</blockquote>\n\nОтправить?",
+            "Inputs": [
+              {
+                "InputName": "📝|Кнопк|✅",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно для повторного ввдода ",
+                "InputContent": "Изменить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_start"
+              },
+              {
+                "InputName": "➕📷|Кнопка|✅",
+                "InputDescription": "Кнопка перенаправляет в меню добавиь фото",
+                "InputContent": "Добавить фото",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_step_addPhoto"
+              },
+              {
+                "InputName": "❓🗑Кнопка|",
+                "InputDescription": "Перенаправляет пользователя в меню \"Точно хотите удалить?\"",
+                "InputContent": "Удалить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_step_askToStopProcess"
+              },
+              {
+                "InputName": "📩|Кнопка|✅",
+                "InputDescription": "Кнопка которая перенаправляет пользоватея в главное меню и отправляет заявку в работу",
+                "InputContent": "Отправить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_step_send_ok"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|R~oB~",
+            "MenuCode": "ProcessAdvice_step_addPhoto",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Утебя есть фото пришли мне их.",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_step_chek"
+              },
+              {
+                "InputName": "➕📷|Ожидание фото|R~oB~",
+                "InputDescription": "Действие по присыланию фото",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ProcessAdvice_step_addPhoto"
+              }
+            ]
+          },
+          {
+            "MenuName": "📩Меню которое ожидает фото для завки.|zgv2R",
+            "MenuCode": "ProcessAdvice_step_send_ok",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Спасибо! Я принял ваш предложение в обработку.\nЕсли главное меню автоматически не прогрузилось, для нового запроса напишите /start",
+            "Inputs": [
+              {
+                "InputName": "📩|Оправка заявки|+0Gh_",
+                "InputDescription": "Отправить заявки администратору",
+                "InputContent": "Отправить",
+                "InputType": "Aktion",
+                "NextMenuCode": "StartMenu_001"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡🔙 🔜Меню которое спрашивает вы действительно хотите удалить|_6B_e",
+            "MenuCode": "ProcessAdvice_step_askToStopProcess",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Утебя есть фото пришли мне их.",
+            "Inputs": [
+              {
+                "InputName": "🔜💡|Вернуться к заполнению|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает в меню проверки заявки.",
+                "InputContent": "Вернуться и закончить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_step_chek"
+              },
+              {
+                "InputName": "🔙💡|Забыть все и вернуться в главное меню|FvO0W",
+                "InputDescription": "Кнопка, которая возвращает в главноое меню",
+                "InputContent": "Забыть все",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAdvice_End_forgetAll"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡🆕Меню которое ожидает текст заявки.",
+            "MenuCode": "ProcessAskQwes_start",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Напишите в диалоговое окно ваш вопрос к HR-отделу.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_001"
+              },
+              {
+                "InputName": "Ожидание текста",
+                "InputDescription": "Действие по вводу текста",
+                "InputContent": "Создание новой заявки",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ProcessAskQwes_GetEmail"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡🆕Меню которое ожидает текст заявки.",
+            "MenuCode": "ProcessAskQwes_GetEmail",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: <b>Важно!</b>\nУкажите вашу корпоративную почту, куда HR-отдел направит ответ.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая возвращает заполнению заявки",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_start"
+              },
+              {
+                "InputName": "Ожидание текста",
+                "InputDescription": "Действие по вводу текста",
+                "InputContent": "Создание новой заявки",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ProcessAskQwes_step_chek"
+              }
+            ]
+          },
+          {
+            "MenuName": "⚙️❓🖍Меню, где у пользователя просят проверить введеный текст вопроса",
+            "MenuCode": "ProcessAskQwes_step_chek",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Пожалуйста, проверьте введённый <b>текст</b> и <b>email</b>, на который поступит ответ.\n\nФото: {nPHoto}\nEmail для ответа: <blockquote>{email}</blockquote>\nТекст:\n<blockquote>{text}</blockquote>",
+            "Inputs": [
+              {
+                "InputName": "📝|Кнопк|✅",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно для повторного ввдода ",
+                "InputContent": "Изменить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_start"
+              },
+              {
+                "InputName": "➕📷|Кнопка|✅",
+                "InputDescription": "Кнопка перенаправляет в меню добавиь фото",
+                "InputContent": "Добавить фото",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_step_addPhoto"
+              },
+              {
+                "InputName": "🗑Кнопка|",
+                "InputDescription": "Перенаправляет пользователя в меню \"Точно хотите удалить?\"",
+                "InputContent": "Удалить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_step_askToStopProcess"
+              },
+              {
+                "InputName": "📩|Кнопка|✅",
+                "InputDescription": "Кнопка которая перенаправляет пользоватея в главное меню и отправляет заявку в работу",
+                "InputContent": "Отправить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_step_send_ok"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡🔙 🔜Меню которое спрашивает вы действительно хотите удалить|_6B_e",
+            "MenuCode": "ProcessAskQwes_step_askToStopProcess",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Утебя есть фото пришли мне их.",
+            "Inputs": [
+              {
+                "InputName": "🔜💡|Вернуться к заполнению|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает в меню проверки заявки.",
+                "InputContent": "Вернуться к заполнению",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_step_chek"
+              },
+              {
+                "InputName": "🔙💡|Забыть все и вернуться в главное меню|FvO0W",
+                "InputDescription": "Кнопка, которая возвращает в главноое меню",
+                "InputContent": "Забыть все",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_End_forgetAll"
+              }
+            ]
+          },
+          {
+            "MenuName": "🔚💡🗑Сообщение от бота, что он всезабыл",
+            "MenuCode": "ProcessAskQwes_End_forgetAll",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Все забыли...",
+            "Inputs": [
+              {
+                "InputName": "Действие✅",
+                "InputDescription": "📝Действие по вводу текста",
+                "InputContent": "Переход на стартовое меню",
+                "InputType": "Aktion",
+                "NextMenuCode": "StartMenu_001"
+              }
+            ]
+          },
+          {
+            "MenuName": "📩Меню которое ожидает фото для завки.|zgv2R",
+            "MenuCode": "ProcessAskQwes_step_send_ok",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖:  Спасибо! Я принял сообщение об ошибке в обработку.\nЕсли главное меню автоматически не прогрузилось, для нового запроса напишите /start",
+            "Inputs": [
+              {
+                "InputName": "📩|Оправка заявки|+0Gh_",
+                "InputDescription": "Отправить заявки администратору",
+                "InputContent": "Отправить",
+                "InputType": "Aktion",
+                "NextMenuCode": "StartMenu_001"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|R~oB~",
+            "MenuCode": "ProcessAskQwes_step_addPhoto",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Утебя есть фото пришли мне их.",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "🔙Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessAskQwes_step_chek"
+              },
+              {
+                "InputName": "➕📷|Ожидание фото|R~oB~",
+                "InputDescription": "Действие по присыланию фото",
+                "InputContent": "Добавление фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ProcessAskQwes_step_addPhoto"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡🆕Меню которое ожидает текст заявки.",
+            "MenuCode": "ProcessExption_start",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Напишите в диалоговое окно найденные ошибки.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_001"
+              },
+              {
+                "InputName": "Ожидание текста",
+                "InputDescription": "Действие по вводу текста",
+                "InputContent": "Создание новой заявки",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ProcessExption_step_chek"
+              }
+            ]
+          },
+          {
+            "MenuName": "🔚💡🗑Сообщение от бота, что он всезабыл",
+            "MenuCode": "ProcessExption_End_forgetAll",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Все забыли...",
+            "Inputs": [
+              {
+                "InputName": "Действие✅",
+                "InputDescription": "📝Действие по вводу текста",
+                "InputContent": "Переход на стартовое меню",
+                "InputType": "Aktion",
+                "NextMenuCode": "StartMenu_001"
+              }
+            ]
+          },
+          {
+            "MenuName": "⚙️💡🖍Меню, где у пользователя просят проверить введеный текст предложения",
+            "MenuCode": "ProcessExption_step_chek",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Вот текст предложений, который ты ввел:\n<blockquote>{text}</blockquote>",
+            "Inputs": [
+              {
+                "InputName": "📝|Кнопк|✅",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно для повторного ввдода ",
+                "InputContent": "Изменить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_start"
+              },
+              {
+                "InputName": "➕📷|Кнопка|✅",
+                "InputDescription": "Кнопка перенаправляет в меню добавиь фото",
+                "InputContent": "Добавить фото",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_step_addPhoto"
+              },
+              {
+                "InputName": "❓🗑Кнопка|",
+                "InputDescription": "Перенаправляет пользователя в меню \"Точно хотите удалить?\"",
+                "InputContent": "Удалить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_step_askToStopProcess"
+              },
+              {
+                "InputName": "📩|Кнопка|✅",
+                "InputDescription": "Кнопка которая перенаправляет пользоватея в главное меню и отправляет заявку в работу",
+                "InputContent": "Отправить",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_step_send_ok"
+              }
+            ]
+          },
+          {
+            "MenuName": "📩Меню которое ожидает фото для завки.|zgv2R",
+            "MenuCode": "ProcessExption_step_send_ok",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Спасибо! Я принял сообщение об ошибке в обработку.\nЕсли главное меню автоматически не прогрузилось, для нового запроса напишите /start",
+            "Inputs": [
+              {
+                "InputName": "📩|Оправка заявки|+0Gh_",
+                "InputDescription": "Отправить заявки администратору",
+                "InputContent": "Отправить",
+                "InputType": "Aktion",
+                "NextMenuCode": "StartMenu_001"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|R~oB~",
+            "MenuCode": "ProcessExption_step_addPhoto",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Утебя есть фото пришли мне их.",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "🔙Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_step_chek"
+              },
+              {
+                "InputName": "➕📷|Ожидание фото|R~oB~",
+                "InputDescription": "Действие по присыланию фото",
+                "InputContent": "Добавление фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ProcessExption_step_addPhoto"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡🔙 🔜Меню которое спрашивает вы действительно хотите удалить|_6B_e",
+            "MenuCode": "ProcessExption_step_askToStopProcess",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Утебя есть фото пришли мне их.",
+            "Inputs": [
+              {
+                "InputName": "🔜💡|Вернуться к заполнению|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает в меню проверки заявки.",
+                "InputContent": "Верннуться к заполнению",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_step_chek"
+              },
+              {
+                "InputName": "🔙💡|Забыть все и вернуться в главное меню|FvO0W",
+                "InputDescription": "Кнопка, которая возвращает в главноое меню",
+                "InputContent": "Забыть все",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ProcessExption_End_forgetAll"
+              }
+            ]
+          },
+          {
+            "MenuName": "🗄|Список заявок пользовтеля |_6B_e",
+            "MenuCode": "ListUserIsues",
+            "MenuType": "DynamicMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Вот твои заявки",
+            "Inputs": [
+              {
+                "InputName": "🔜💡|Вернуться к заполнению|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает в меню проверки заявки.",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_001"
+              },
+              {
+                "InputName": "🔙💡|Забыть все и вернуться в главное меню|FvO0W",
+                "InputDescription": "Кнопка, которая возвращает в главноое меню",
+                "InputContent": "Забыть все",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "UseIsuesInfo"
+              }
+            ]
+          },
+          {
+            "MenuName": "🗄|Список заявок пользовтеля |_6B_e",
+            "MenuCode": "UseIsuesInfo",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Твоя заявка <blockquote>\nId: {id}\nДата: {date}\nТип: {type}\n\nТекст:\n{text}</blockquote>",
+            "Inputs": [
+              {
+                "InputName": "🔜💡|Вернуться к r списку|*I~!$",
+                "InputDescription": "Кнопка, которая возвращает в меню проверки заявки.",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ListUserIsues"
+              }
+            ]
+          },
+          {
+            "MenuName": "Меню оожидания |_6B_e",
+            "MenuCode": "AwaytingUser",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Я пока отойду. Если что то понадобиться нажми /start.",
+            "Inputs": [
+              {
+                "InputName": "🔜💡|Вернуться к r списку|*I~!$",
+                "InputDescription": "Просто ожидание",
+                "InputContent": "Ожидание",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "AwaytingUser"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ProcessName": "Контент для администратора",
+        "IsActive": true,
+        "UserAccessCode": "admin",
+        "Content": [
+          {
+            "MenuName": "🌟📱Меню администраторов.",
+            "MenuCode": "StartMenu_002",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Меню администтратора.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел gjkmpjdfntkb",
+                "InputContent": "Пользователи",
+                "InputType": "StaticInput",
+                "NextMenuCode": "AllUserTypsMenu"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел заявки",
+                "InputContent": "Заявки",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_isue_menu"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел загрузки фото в главное меню ",
+                "InputContent": "Фото - стартовое меню",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ChanngeStartMenuPhoto"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел загрузки фото для впредложения 1 собщение с вопросоом",
+                "InputContent": "Фото - меню предложение",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Advice_Photo"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел загрузки фото для меню вопрооса 1 собщение с вопросоом",
+                "InputContent": "Фото - меню вопрос",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Qwestion_Photo"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел загрузки фото для меню ошибка 1 собщение с вопросоом",
+                "InputContent": "Фото - меню ошибка",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Exeption_Photo"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел замены текста в меню \"Предложение\"",
+                "InputContent": "Текст - меню \"передложение\"",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Exeption_TextMenu_ProcessAdvice_start"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел замены текста в меню \"Вопрос\"",
+                "InputContent": "Текст - меню \"вопрос\"",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Exeption_TextMenu_ProcessAskQwes_start"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел замены текста в меню \"Ошибка\"",
+                "InputContent": "Текст - меню \"ошибка\"",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Exeption_TextMenu_ProcessExption_start"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздел пользователи",
+            "MenuCode": "AllUserTypsMenu",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Кто тебе нужен.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя к списку администраторов",
+                "InputContent": "Администраторы",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Administrator_list"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя к списку администраторов",
+                "InputContent": "Пользователи",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_list"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел пользователей ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздел пользователи",
+            "MenuCode": "AllIsuesMenu",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Какие заявки тебе нужны.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел пользователей ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздел пользователи",
+            "MenuCode": "Administrator_list",
+            "MenuTypeCode": "DynamicMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Вот все администраторы",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя к списку администраторов",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "AllUserTypsMenu"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая перенаправляет в меню информации о пользователя",
+                "InputContent": "Назад",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "Admin_Info"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздел пользователи",
+            "MenuCode": "Admin_Info",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Пользователь:\n Id: {id}\nИмя: {telename}\nТелеграм id: {teleid}\nТип пользователя: {usertype}",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел пользователей ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Administrator_list"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в меню выбора пользователя.",
+                "InputContent": "Изменить права",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "Admin_Info_changeTypeToUserMenu"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздл изменения типа поользователя",
+            "MenuCode": "Admin_Info_changeTypeToUserMenu",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Вы выберите тип пользователя:\nИмя: {telename}\nТекущий тип пользователя: {usertype}",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел списка админов ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Admin_Info"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, кнопка",
+                "InputContent": "{typeName}",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "Admin_Info_changeTypeToUserMenu"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздел пользователи",
+            "MenuCode": "User_list",
+            "MenuTypeCode": "DynamicMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Вот все администраторы",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя к списку администраторов",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "AllUserTypsMenu"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая перенаправляет в меню информации о пользователя",
+                "InputContent": "Назад",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_Info"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздел инфолрмация по пользователю",
+            "MenuCode": "User_Info",
+            "MenuTypeCode": "DynamicMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: 🤖: Пользователь:\n Id: {id}\nИмя: {telename}\nТелеграм id: {teleid}\nТип пользователя: {usertype}",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя к списку администраторов",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_list"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая перенаправляет в меню информации о пользователя",
+                "InputContent": "Права пользователя",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_Info_changeTypeToUserMenu"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздл изменения типа пользователя",
+            "MenuCode": "User_Info_changeTypeToUserMenu",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Вы выберите тип пользователя:\nИмя: {telename}\nТекущий тип пользователя: {usertype}",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел списка админов ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_Info"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, кнопка",
+                "InputContent": "{typeName}",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_Info_changeTypeToUserMenu"
+              }
+            ]
+          },
+          {
+            "MenuName": "Меню всех заявок",
+            "MenuCode": "User_isue_menu",
+            "MenuTypeCode": "DynamicMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Выбери какие заявки тебе нужны.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел списка админов ",
+                "InputContent": "Новые заявки",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_Newisue_menu_list"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел списка админов ",
+                "InputContent": "Заявки в работе",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_InWorkisue_menu_list"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел списка админов ",
+                "InputContent": "Найти заявку",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_isue_menu"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, кнопка",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              }
+            ]
+          },
+          {
+            "MenuName": "Меню новых заявок",
+            "MenuCode": "User_Newisue_menu_list",
+            "MenuTypeCode": "DynamicMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Новые заявки.\nВыбери какие заявки тебе нужны.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел списка админов ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_isue_menu"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, кнопка",
+                "InputContent": "Заявка",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_Newisue_menu_Info"
+              }
+            ]
+          },
+          {
+            "MenuName": "Раздл изменения типа пользователя",
+            "MenuCode": "User_Newisue_menu_Info",
+            "MenuTypeCode": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: <b>Заявка</b>\n\n<b>Id:</b> {isueId}\n<b>Пользователь:</b> {userName}\n<b>Тип запроса:</b> {isueType}\n<b>Фото:</b> {nPhoto}\nТекст: <blockquote>{texIsue}</blockquote>",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в список новых заявок ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_Newisue_menu_list"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, кнопка",
+                "InputContent": "Взять в работу",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_Newisue_menu_Info"
+              }
+            ]
+          },
+          {
+            "MenuName": "Меню новых заявок",
+            "MenuCode": "User_InWorkisue_menu_list",
+            "MenuTypeCode": "DynamicMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Заявка в работе\nВыбери какие заявки тебе нужны.",
+            "Inputs": [
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, которая Перенаправляет пользователя в раздел списка админов ",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "User_isue_menu"
+              },
+              {
+                "InputName": "Кнопка",
+                "InputDescription": "Кнопка, кнопка",
+                "InputContent": "Назад",
+                "InputType": "DynamicSample",
+                "NextMenuCode": "User_InWorkisue_menu_list"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|tMe+3",
+            "MenuCode": "ChanngeStartMenuPhoto",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Добавте фото",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              },
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая удаляет все",
+                "InputContent": "Удалить все фотки",
+                "InputType": "StaticInput",
+                "NextMenuCode": "ChanngeStartMenuPhoto_delite"
+              },
+              {
+                "InputName": "➕📷|Ожидание фото|FYU6U",
+                "InputDescription": "Действие по присыланию фото",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "ChanngeStartMenuPhoto"
+              }
+            ]
+          },
+          {
+            "MenuName": "🔚💡🗑Сообщение от бота, что он всезабыл",
+            "MenuCode": "ChanngeStartMenuPhoto_delite",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Фото удалены",
+            "Inputs": [
+              {
+                "InputName": "Действие✅",
+                "InputDescription": "📝Действие по вводу текста",
+                "InputContent": "Переход на добавления фото",
+                "InputType": "Aktion",
+                "NextMenuCode": "ChanngeStartMenuPhoto"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|tMe+3",
+            "MenuCode": "Channge_Advice_Photo",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Добавте фото",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              },
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая удаляет все",
+                "InputContent": "Удалить все фотки",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Advice_Photo_delite"
+              },
+              {
+                "InputName": "➕📷|Ожидание фото|FYU6U",
+                "InputDescription": "Действие по присыланию фото",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "Channge_Advice_Photo"
+              }
+            ]
+          },
+          {
+            "MenuName": "🔚💡🗑Сообщение от бота, что он всезабыл",
+            "MenuCode": "Channge_Advice_Photo_delite",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Фото удалены",
+            "Inputs": [
+              {
+                "InputName": "Действие✅",
+                "InputDescription": "📝Действие по вводу текста",
+                "InputContent": "Переход на добавления фото",
+                "InputType": "Aktion",
+                "NextMenuCode": "Channge_Advice_Photo"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|tMe+3",
+            "MenuCode": "Channge_Qwestion_Photo",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Добавте фото",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              },
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая удаляет все",
+                "InputContent": "Удалить все фотки",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Qwestion_Photo_delite"
+              },
+              {
+                "InputName": "➕📷|Ожидание фото|FYU6U",
+                "InputDescription": "Действие по присыланию фото",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "Channge_Qwestion_Photo"
+              }
+            ]
+          },
+          {
+            "MenuName": "🔚💡🗑Сообщение от бота, что он всезабыл",
+            "MenuCode": "Channge_Qwestion_Photo_delite",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Фото удалены",
+            "Inputs": [
+              {
+                "InputName": "Действие✅",
+                "InputDescription": "📝Действие по вводу текста",
+                "InputContent": "Переход на добавления фото",
+                "InputType": "Aktion",
+                "NextMenuCode": "Channge_Qwestion_Photo"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|tMe+3",
+            "MenuCode": "Channge_Exeption_Photo",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Добавте фото",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              },
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая удаляет все",
+                "InputContent": "Удалить все фотки",
+                "InputType": "StaticInput",
+                "NextMenuCode": "Channge_Exeption_Photo_delite"
+              },
+              {
+                "InputName": "➕📷|Ожидание фото|FYU6U",
+                "InputDescription": "Действие по присыланию фото",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "Channge_Exeption_Photo"
+              }
+            ]
+          },
+          {
+            "MenuName": "🔚💡🗑Сообщение от бота, что он всезабыл",
+            "MenuCode": "Channge_Exeption_Photo_delite",
+            "MenuType": "Message",
+            "NeedToDelete": true,
+            "Content": "🤖: Фото удалены",
+            "Inputs": [
+              {
+                "InputName": "Действие✅",
+                "InputDescription": "📝Действие по вводу текста",
+                "InputContent": "Переход на добавления фото",
+                "InputType": "Aktion",
+                "NextMenuCode": "Channge_Exeption_Photo"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|tMe+3",
+            "MenuCode": "Channge_Exeption_TextMenu_ProcessAdvice_start",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Хочешь изменить текст предложения ?\nСейчас:<blockquote>{text}</blockquote>",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              },
+              {
+                "InputName": "➕📷|Ожидание текста",
+                "InputDescription": "Действие по текста",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "StartMenu_002"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|tMe+3",
+            "MenuCode": "Channge_Exeption_TextMenu_ProcessAskQwes_start",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Хочешь изменить текст вопроса ?\nСейчас:<blockquote>{text}</blockquote>",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              },
+              {
+                "InputName": "➕📷|Ожидание текста",
+                "InputDescription": "Действие по текста",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "StartMenu_002"
+              }
+            ]
+          },
+          {
+            "MenuName": "💡📷Меню которое ожидает фото для завки.|tMe+3",
+            "MenuCode": "Channge_Exeption_TextMenu_ProcessExption_start",
+            "MenuType": "StaticMenu",
+            "NeedToDelete": true,
+            "Content": "🤖: Хочешь изменить текст ошибки ?\nСейчас:<blockquote>{text}</blockquote>",
+            "Inputs": [
+              {
+                "InputName": "🔙|Кнопка|p61#6",
+                "InputDescription": "Кнопка, которая возвращает пользователя обратно",
+                "InputContent": "Назад",
+                "InputType": "StaticInput",
+                "NextMenuCode": "StartMenu_002"
+              },
+              {
+                "InputName": "➕📷|Ожидание текста",
+                "InputDescription": "Действие по текста",
+                "InputContent": "Дбавить фото",
+                "InputType": "AwaitingText",
+                "NextMenuCode": "StartMenu_002"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

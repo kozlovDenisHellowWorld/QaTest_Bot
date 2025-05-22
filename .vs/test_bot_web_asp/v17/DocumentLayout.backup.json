@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\test\\test_bot_web_asp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0C96DABC-FCB9-452D-B65F-E371BF42B09B}|Web_test_bot\\Web_test_bot.csproj|d:\\test\\test_bot_web_asp\\web_test_bot\\botinst.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0C96DABC-FCB9-452D-B65F-E371BF42B09B}|Web_test_bot\\Web_test_bot.csproj|solutionrelative:web_test_bot\\botinst.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "botInst.json",
+              "DocumentMoniker": "D:\\test\\test_bot_web_asp\\Web_test_bot\\botInst.json",
+              "RelativeDocumentMoniker": "Web_test_bot\\botInst.json",
+              "ToolTip": "D:\\test\\test_bot_web_asp\\Web_test_bot\\botInst.json",
+              "RelativeToolTip": "Web_test_bot\\botInst.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-13T15:37:54.933Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
